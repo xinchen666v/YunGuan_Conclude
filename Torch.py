@@ -21,3 +21,18 @@ class Net(torch.nn.Module):
 
         # 定义第四层全连接层，输入维度为 64，输出维度为 10
         self.fc4 = torch.nn.Linear(64, 10)
+
+    def forward(self, x):
+        # 应用 ReLU 激活函数
+        x = torch.nn.functional.relu(self.fcl(x))
+
+        # 应用 ReLU 激活函数
+        x = torch.nn.functional.relu(self.fc2(x))
+
+        # 应用 ReLU 激活函数
+        x = torch.nn.functional.relu(self.fc3(x))
+
+        # 应用 ReLU 激活函数
+        x = torch.nn.functional.log_softmax(self.fc4(x),dim=1)
+
+        return x
